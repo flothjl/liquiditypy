@@ -1,2 +1,2 @@
-# fractional-cli
-cli for fractional.art
+# liquiditypy
+Crypto eh
