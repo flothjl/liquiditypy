@@ -1,10 +1,9 @@
-from web3 import Web3
-from liquiditypy.models.contract import Erc71Contract
+from liquiditypy.models.contract import Erc721Contract
 from liquiditypy.ethereum.web3_base import Web3Base
 
 
 class Erc721Asset(Web3Base):
-    def __init__(self, contract: Erc71Contract, web3_rpc=None):
+    def __init__(self, contract: Erc721Contract, web3_rpc=None):
         super().__init__(web3_rpc=web3_rpc)
         self.contract = contract
 

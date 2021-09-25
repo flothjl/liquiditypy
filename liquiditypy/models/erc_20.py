@@ -1,4 +1,3 @@
-from web3 import Web3
 from liquiditypy.models.contract import Erc20Contract
 from liquiditypy.ethereum.web3_base import Web3Base
 
