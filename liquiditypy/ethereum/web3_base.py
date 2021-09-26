@@ -7,7 +7,7 @@ class Web3Base:
         self._web3_rpc = web3_rpc
         if not self._web3_rpc:
             self._web3_rpc = DEFAULT_RPC
-        self.web3 = Web3(Web3.HTTPProvider(self._web3_rpc))
+        self.web3 = Web3(Web3.AsyncHTTPProvider(self._web3_rpc))
 
 
    

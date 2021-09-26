@@ -1,3 +1,4 @@
+import asyncio
 import web3
 from liquiditypy.models.erc_721 import Erc721Asset
 from liquiditypy.models.contract import Erc721Contract
@@ -7,5 +8,19 @@ test = Erc721Asset(
     Erc721Contract(contract_address)
 )
 
+async def get_owner(i):
+    if i%20 == 0:
+        print(f'TokenID: {i}')
+    return (i, await test.owner_of(i))
 
-print(test.owner_of(929))
+async def main():
+    owners = {}
+    tasks = []
+    for i in range(100):
+        tasks.append(asyncio.create_task(get_owner(i)))
+    response = await asyncio.gather(*tasks)
+
+
+    print(response)
+
+asyncio.run(main())
