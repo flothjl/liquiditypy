@@ -8,22 +8,22 @@ class Erc721Asset(Web3Base):
         self.contract = contract
 
     @property
-    async def asset_contract(self):
+    def asset_contract(self):
         return self.web3.eth.contract(address=self.contract.address, abi=self.contract.abi)
 
-    async def get_wallet_balance(self, wallet_address):
-        return await self.asset_contract.functions.balanceOf(wallet_address).call()
+    def get_wallet_balance(self, wallet_address):
+        return self.asset_contract.functions.balanceOf(wallet_address).call()
 
     @property
-    async def asset_name(self):
-        return await self.asset_contract.functions.name().call()
+    def asset_name(self):
+        return self.asset_contract.functions.name().call()
 
     @property
-    async def asset_symbol(self):
-        return await self.asset_contract.functions.symbol().call()
+    def asset_symbol(self):
+        return self.asset_contract.functions.symbol().call()
 
-    async def owner_of(self, asset_id:int):
-        return await self.asset_contract.functions.ownerOf(asset_id).call()
+    def owner_of(self, asset_id:int):
+        return self.asset_contract.functions.ownerOf(asset_id).call()
     
-    async def retrieve(self, asset_id: int):
-        return await self.asset_contract.functions.retrieve(asset_id).call()
+    def retrieve(self, asset_id: int):
+        return self.asset_contract.functions.retrieve(asset_id).call()

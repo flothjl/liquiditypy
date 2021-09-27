@@ -9,9 +9,9 @@ test = Erc721Asset(
 )
 
 async def get_owner(i):
-    if i%20 == 0:
+    if i%10 == 0:
         print(f'TokenID: {i}')
-    return (i, await test.owner_of(i))
+    return (i, test.owner_of(i))
 
 async def main():
     owners = {}
