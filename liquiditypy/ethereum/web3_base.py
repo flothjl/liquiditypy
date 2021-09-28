@@ -7,9 +7,9 @@ DEFAULT_WS_RPC = 'wss://mainnet.infura.io/ws/v3/24ea51066f304e5d971ee63991ae4276
 
 
 class Web3Base:
-    def __init__(self, web3_rpc=None):
+    def __init__(self, web3_rpc=None, is_async=None):
         self._web3_rpc = web3_rpc
-
+        self._is_async = is_async
         if not self._web3_rpc:
             self._web3_rpc = DEFAULT_WS_RPC
 
@@ -24,6 +24,7 @@ class Web3Base:
         if provider_type in ['ws', 'wss']:
             return Web3(Web3.WebsocketProvider(rpc_provider))
         if provider_type in ['http', 'https']:
-            if is_async:
+            if self._is_async:
+                print(f'Is Async? - {self._is_async}')
                 return Web3(Web3.AsyncHTTPProvider(rpc_provider))
             return Web3(Web3.HTTPProvider(rpc_provider))
