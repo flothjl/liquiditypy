@@ -1,5 +1,6 @@
 from web3 import Web3
 from web3.providers import rpc
+from liquiditypy.ethereum.exceptions import NotImplementedException
 
 
 DEFAULT_HTTP_RPC = 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'
@@ -10,6 +11,8 @@ class Web3Base:
     def __init__(self, web3_rpc=None, is_async=None):
         self._web3_rpc = web3_rpc
         self._is_async = is_async
+        if is_async:
+            raise NotImplementedException()
         if not self._web3_rpc:
             self._web3_rpc = DEFAULT_WS_RPC
 
