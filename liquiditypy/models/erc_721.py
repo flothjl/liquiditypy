@@ -3,7 +3,7 @@ from liquiditypy.ethereum.web3_base import Web3Base
 
 
 class Erc721Asset(Web3Base):
-    def __init__(self, contract: Erc721Contract, web3_rpc=None, is_async=True):
+    def __init__(self, contract: Erc721Contract, web3_rpc=None, is_async=False):
         super().__init__(web3_rpc=web3_rpc, is_async=is_async)
         self.contract = contract
 
