@@ -1,7 +1,7 @@
 import json
 import requests
 from web3.eth import Eth
-from liquiditypy.ethereum.etherscan.models import EtherscanResponse
+from .models import EtherscanResponse
 
 class Etherscan:
     """
