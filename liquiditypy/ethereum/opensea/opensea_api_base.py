@@ -1,8 +1,9 @@
-import inspect
-import json
+from typing import List
 import requests
-from .models import EventType
-class Opensea:
+from liquiditypy.ethereum.base.utils import get_value_with_default, get_timestamp
+from .models import EventType, OpenSeaAssetEvent
+
+class OpenseaApi:
     """
     Base class to interact with etherscan api
     """
@@ -25,7 +26,7 @@ class Opensea:
         occurred_before: int = None,
         occurred_after: int = None,
         asset_contract_address: str = None
-    ) -> requests.Response:
+    ) -> List[OpenSeaAssetEvent]:
 
         params = {
             'only_opensea': only_opensea,
@@ -63,6 +64,17 @@ class Opensea:
             raise Exception(
                 f'Error with http request to etherscan: {response.content}')
         
+        try:
+            data = response.json()
+        except Exception as err:
+            raise Exception(f'There was an error parsing json response: {err}')
         
+        events = []
+        
+        if not (asset_events := data.get('asset_events')):
+            return events
 
-        return response
+        for event in asset_events:
+            events.append(OpenSeaAssetEvent(event))
+        
+        return events

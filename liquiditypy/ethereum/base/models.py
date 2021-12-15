@@ -4,7 +4,7 @@ from dataclasses import dataclass
 class Transaction:
     block_number: str = None
     timestamp: int = None
-    hash: str = None
+    transaction_hash: str = None
     nonce: str = None
     block_hash: str = None
     from_address: str = None

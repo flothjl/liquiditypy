@@ -66,3 +66,22 @@ class Etherscan:
             raise Exception(
                 f'Error with http request to etherscan: {response.content}')
         return EtherscanResponse(response)
+
+    def get_abi(self, contract_address: str) -> dict:
+        response = requests.get(
+            f'{self.BASE_URL}',
+            params={
+                'module':'contract',
+                'action':'getabi',
+                'address': contract_address,
+                'apikey': self.api_key
+
+            }
+        )
+        if response.status_code != 200:
+            raise Exception(
+                f'Error with http request to etherscan: {response.content}'
+            )
+        return response.json()
+
+

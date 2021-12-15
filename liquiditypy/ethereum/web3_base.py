@@ -17,7 +17,6 @@ class Web3Base:
             self._web3_rpc = DEFAULT_WS_RPC
 
         self.web3 = self._build_web3(self._web3_rpc)
-        print(self._web3_rpc)
 
     def _build_web3(self, rpc_provider: str, is_async: bool = False) -> Web3:
         provider_type = rpc_provider.split('://')
@@ -28,6 +27,5 @@ class Web3Base:
             return Web3(Web3.WebsocketProvider(rpc_provider))
         if provider_type in ['http', 'https']:
             if self._is_async:
-                print(f'Is Async? - {self._is_async}')
                 return Web3(Web3.AsyncHTTPProvider(rpc_provider))
             return Web3(Web3.HTTPProvider(rpc_provider))

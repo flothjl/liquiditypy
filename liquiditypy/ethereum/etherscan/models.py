@@ -63,7 +63,7 @@ class EtherscanResponse:
         return EtherscanTxn(
             block_number=txn.get(EtherscanTxnEnum.BLOCK_NUM.value),
             timestamp=txn.get(EtherscanTxnEnum.TIMESTAMP.value),
-            hash = txn.get(EtherscanTxnEnum.HASH.value),
+            transaction_hash = txn.get(EtherscanTxnEnum.HASH.value),
             nonce = txn.get(EtherscanTxnEnum.NONCE.value),
             block_hash = txn.get(EtherscanTxnEnum.BLOCK_HASH.value),
             from_address = txn.get(EtherscanTxnEnum.FROM.value),

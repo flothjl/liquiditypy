@@ -2,7 +2,7 @@ import json
 from liquiditypy.ethereum.etherscan.etherscan_base import Etherscan
 from liquiditypy.ethereum.taxes.taxes_base import Taxes
 
-from liquiditypy.ethereum.opensea.opensea_base import Opensea
+from liquiditypy.ethereum.opensea.opensea_api_base import Opensea
 from liquiditypy.ethereum.opensea.models import EventType
 from liquiditypy.creds import ETHERSCAN_API_KEY
 
@@ -16,6 +16,3 @@ values = os.get_nft_events(
     account_address=my_address,
     event_type=EventType.SUCCESSFUL
 )
-with open("os_sample_data.json", "w+") as file1:
-    # Writing data to a file
-    file1.write(json.dumps(values.json()))
