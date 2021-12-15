@@ -3,11 +3,9 @@ from typing import List, Union
 
 from liquiditypy.ethereum.etherscan.models import EtherscanTxn
 
+
 class TaxEvent:
-    def __init__(
-        self,
-        etherscan_txn: EtherscanTxn
-    ):
+    def __init__(self, etherscan_txn: EtherscanTxn):
         self.contract: str = etherscan_txn.contract_address
         self.buy_date: datetime.datetime = None
         self.sell_date: datetime.datetime = None
